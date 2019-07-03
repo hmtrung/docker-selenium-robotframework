@@ -13,14 +13,14 @@ ${NODE_URL}       http://172.17.0.5:5555/wd/hub
 ${CAPABILITIES}   browserName:chrome,platform:LINUX
 ${DELAY}          0
 ${VALID USER}     demo
-${VALID PASSWORD} mode
+${VALID PASSWORD}    mode
 ${LOGIN URL}      http://${SERVER}/
 ${WELCOME URL}    http://${SERVER}/welcome.html
 ${ERROR URL}      http://${SERVER}/error.html
 
 *** Keywords ***
 Open Browser To Login Page
-    Open Browser    ${LOGIN URL}    ${BROWSER}    None    ${GRID_URL}    ${CAPABILITIES}
+    Open Browser    ${LOGIN URL}    ${BROWSER}    None    ${NODE_URL}    ${CAPABILITIES}
     Maximize Browser Window
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
