@@ -9,7 +9,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${SERVER}         192.168.1.10:7272
 ${BROWSER}        chrome
-${GRID_URL}       http://172.17.0.5:5555/wd/hub
+${NODE_URL}       http://172.17.0.5:5555/wd/hub
 ${CAPABILITIES}   browserName:chrome,platform:LINUX
 ${DELAY}          0
 ${VALID USER}     demo
