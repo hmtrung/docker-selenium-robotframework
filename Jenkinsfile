@@ -18,7 +18,7 @@ pipeline {
           parallel {
             stage('Clean up existed app') {
                 steps {
-                    sh label: '', returnStatus: true, script: 'docker stop my-running-app'
+                    sh label: '', returnStatus: true, script: 'docker stop my-running-app1'
                 }
             }
             stage('Cleanup existed Grid') {
@@ -33,14 +33,13 @@ pipeline {
         }
         stage('Run app') {
             steps {
-                sh label: '', script: 'docker network create mynet'
+                sh label: '', script: 'docker network create grid'
                 sh label: '', script: 'docker run -d --rm -p 7272:7272 --net grid --name my-running-app1 my-python-app1:${BUILD_NUMBER}'
             }
         }
         stage('Setup Grid') {
             steps {
-                sh label: '', script: '''docker network create grid
-docker run -d --rm -p 4444:4444 --net grid --name selenium-hub -v ${PWD}:/opt/demo hmtrung/selenium-hub:3.141.59-radium
+                sh label: '', script: '''docker run -d --rm -p 4444:4444 --net grid --name selenium-hub -v ${PWD}:/opt/demo hmtrung/selenium-hub:3.141.59-radium
 docker run -d --rm -p 5900:5900 --net grid --name chrome-node -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome-debug:3.141.59-radium
 docker run -d --rm -p 5901:5900 --net grid --name firefox-node -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-firefox-debug:3.141.59-radium
 '''
