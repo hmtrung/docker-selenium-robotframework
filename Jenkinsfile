@@ -9,7 +9,7 @@ pipeline {
         stage('Build image') {
             steps {
                 sh label: '', script: '''
-                    docker build --build-arg http_proxy=http://10.10.10.10:8080 --build-arg https_proxy=http://10.10.10.10:8080 -t my-python-app1:${BUILD_NUMBER} .
+                    docker build --build-arg http_proxy=http://10.10.10.10:8080 --build-arg https_proxy=http://10.10.10.10:8080 -t my-python-app1:${BUILD_NUMBER} WebDemo
                     docker tag my-python-app1:${BUILD_NUMBER} my-python-app1:latest
                     '''
             }
