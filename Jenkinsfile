@@ -14,7 +14,7 @@ pipeline {
                     '''
             }
         }    
-        stage('Cleanup) {
+        stage('Cleanup') {
           parallel {
             stage('Clean up existed app') {
                 steps {
